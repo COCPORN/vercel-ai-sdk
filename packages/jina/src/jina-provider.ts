@@ -19,16 +19,19 @@ export interface JinaProvider {
 export const createJina = createProvider<JinaProvider>({
   provider: 'jina',
   baseURL: 'https://api.jina.ai/v1',
+  headers: () => ({
+    'Content-Type': 'application/json',
+  }),
   generateModels: ({
     defaultObjectGenerationModel,
     defaultTextGenerationModel,
     create,
     config,
-  }: { // Explicitly type the parameters
-    defaultObjectGenerationModel: any; // Replace 'any' with actual type if known
-    defaultTextGenerationModel: any; // Replace 'any' with actual type if known
-    create: any; // Replace 'any' with actual type if known
-    config: any; // Replace 'any' with actual type if known
+  }: { 
+    defaultObjectGenerationModel: any;
+    defaultTextGenerationModel: any;
+    create: any;
+    config: any;
   }) => ({
     embedding: create.model(
       (modelId: JinaEmbeddingModelId) =>
