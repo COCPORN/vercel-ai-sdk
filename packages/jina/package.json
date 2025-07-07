@@ -1,0 +1,40 @@
+{
+  "name": "@ai-sdk/jina",
+  "version": "0.0.1",
+  "type": "module",
+  "license": "Apache-2.0",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "types": "./dist/index.d.ts",
+  "dependencies": {
+    "@ai-sdk/provider": "workspace:*",
+    "@ai-sdk/provider-utils": "workspace:*",
+    "zod": "3.25.49"
+  },
+  "devDependencies": {
+    "@types/node": "^20.17.24",
+    "@vercel/ai-tsconfig": "workspace:*",
+    "tsup": "^8",
+    "typescript": "5.8.3"
+  },
+  "scripts": {
+    "build": "pnpm clean && tsup",
+    "build:watch": "pnpm clean && tsup --watch",
+    "clean": "rm -rf dist *.tsbuildinfo",
+    "lint": "eslint \"./**/*.ts*\"",
+    "type-check": "tsc --build",
+    "prettier-check": "prettier --check \"./**/*.ts*\"",
+    "test": "vitest",
+    "test:ci": "vitest run",
+    "test:update": "vitest -u",
+    "test:watch": "vitest --watch",
+    "prepack": "pnpm build"
+  }
+}
